@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Welcome message
-        run: echo "My first CI pipeline is running!"
+      - name: Check out repository
+        uses: actions/checkout@v7
 
       - name: Show current directory
         run: pwd
@@ -17,5 +17,9 @@ jobs:
       - name: Show repository files
         run: ls -la
 
+      - name: Verify README exists
+        run: test -f README.md
+
       - name: Confirm success
-        run: echo "CI pipeline completed successfully!"
+        run: echo "Repository checkout and checks passed!"
+
