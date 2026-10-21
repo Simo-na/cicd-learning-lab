@@ -1,0 +1,21 @@
+
+name: My First CI Pipeline
+
+on: push
+
+jobs:
+  learn-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Welcome message
+        run: echo "My first CI pipeline is running!"
+
+      - name: Show current directory
+        run: pwd
+
+      - name: Show repository files
+        run: ls -la
+
+      - name: Confirm success
+        run: echo "CI pipeline completed successfully!"
