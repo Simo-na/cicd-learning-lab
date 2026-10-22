@@ -1,12 +1,15 @@
 
 name: My First CI Pipeline
 
-on: 
+on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch: 
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   learn-ci:
@@ -16,15 +19,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
 
-      - name: Show current directory
-        run: pwd
-
       - name: Show repository files
         run: ls -la
 
       - name: Verify README exists
         run: test -f README.md
 
-      - name: Confirm success
-        run: echo "Repository checkout and checks passed!"
+      - name: Display non-sensitive configuration
+        env:
+          APP_ENV: testing
+        run: echo "Application environment is $APP_ENV"
 
+      - name: Confirm success
+        run: echo "CI checks passed!"
