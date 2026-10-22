@@ -23,7 +23,7 @@ jobs:
         run: ls -la
 
       - name: Verify README exists
-        run: test -f README.md
+        run: test -f MISSING.md
 
       - name: Confirm success
         run: echo "Repository checkout and checks passed!"
