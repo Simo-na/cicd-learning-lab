@@ -18,6 +18,19 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+      
+      - name: Verify demo secret is available
+        env:
+          DEMO_SECRET: ${{ secrets.CI_DEMO_SECRET }}
+        shell: bash
+        run: |
+          if [ -n "$DEMO_SECRET" ]; then
+            echo "Demo secret is available."
+          else
+            echo "Demo secret is missing."
+            exit 1
+          fi
+
 
       - name: Show repository files
         run: ls -la
